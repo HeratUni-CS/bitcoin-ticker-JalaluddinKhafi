@@ -11,8 +11,6 @@ class _PriceScreenState extends State<PriceScreen> {
   String selectedCurrency = "USD";
 
   DropdownButton<String> getDropdownbutton() {
-
-
     List<DropdownMenuItem<String>> dropDownItems = [];
     for (String currency in currenciesList) {
       var newItem = DropdownMenuItem(
@@ -21,8 +19,6 @@ class _PriceScreenState extends State<PriceScreen> {
       );
       dropDownItems.add(newItem);
     }
-
-
     return DropdownButton<String>(
       value: selectedCurrency,
       items: dropDownItems,
@@ -34,14 +30,20 @@ class _PriceScreenState extends State<PriceScreen> {
     );
   }
 
-  List<Widget> getPickerItems() {
+  CupertinoPicker iosPicker(){
+
     List<Text> pickerItems = [];
     for (String currency in currenciesList) {
       pickerItems.add(Text(currency));
     }
-    return pickerItems;
+    return CupertinoPicker(
+      itemExtent: 32.0,
+      onSelectedItemChanged: (selectedIndex) {
+        print(selectedIndex);
+      },
+      children:pickerItems,
+    );
   }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -78,13 +80,8 @@ class _PriceScreenState extends State<PriceScreen> {
               alignment: Alignment.center,
               padding: const EdgeInsets.only(bottom: 30.0),
               color: Colors.lightBlue,
-              child: CupertinoPicker(
-                itemExtent: 32.0,
-                onSelectedItemChanged: (selectedIndex) {
-                  print(selectedIndex);
-                },
-                children: getPickerItems(),
-              )),
+              child:
+          ),
         ],
       ),
     );
