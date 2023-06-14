@@ -7,11 +7,18 @@ class PriceScreen extends StatefulWidget {
 
 class _PriceScreenState extends State<PriceScreen> {
   String selectedCurrency = "USD";
-
-  void getDropdownItems(){
+  List<DropdownMenuItem> getDropdownItems(){
+    List<DropdownMenuItem<String>> dropDownItems=[];
     for(int i=0;i<currenciesList.length;i++){
-      print(i);
+      String currency= currenciesList[i];
+      var newItem =DropdownMenuItem(
+        child: Text(currency),
+        value: currency,
+      );
+      dropDownItems.add(newItem);
+
     }
+    return dropDownItems;
   }
 
 
