@@ -47,16 +47,6 @@ class _PriceScreenState extends State<PriceScreen> {
     );
   }
 
-  Widget getPicker(){
-    if(Platform.isAndroid){
-      return getAndroidDropdownbutton();
-    }else if(Platform.isIOS){
-    return iosPicker();
-    }else{
-    return getPicker();
-  }
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -93,7 +83,7 @@ class _PriceScreenState extends State<PriceScreen> {
               alignment: Alignment.center,
               padding: const EdgeInsets.only(bottom: 30.0),
               color: Colors.lightBlue,
-              child:getPicker(),
+              child: Platform.isAndroid ? getAndroidDropdownbutton() : iosPicker(),
           ),
         ],
       ),
